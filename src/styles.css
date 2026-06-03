@@ -1,3 +1,103 @@
-/* You can add global styles to this file, and also import other style files */
+/* Global styles: Tailwind v4 + spartan-ng theme. */
 
 @import 'tailwindcss';
+@import '@spartan-ng/brain/hlm-tailwind-preset.css';
+@import 'tw-animate-css';
+
+/* LPU brand palette */
+@theme {
+  --color-lpu-maroon: #7d0006;
+  --color-lpu-red: #ad0009;
+  --color-lpu-gold: #f0b600;
+}
+
+:root {
+  color-scheme: light;
+
+  --font-sans:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+    sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+
+  --radius: 0.625rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+
+  /* LPU maroon as primary */
+  --primary: #7d0006;
+  --primary-foreground: oklch(0.985 0 0);
+
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+
+  /* LPU gold as accent */
+  --accent: #f0b600;
+  --accent-foreground: oklch(0.205 0 0);
+
+  /* LPU red as destructive */
+  --destructive: #ad0009;
+
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: #7d0006;
+
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: #7d0006;
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: #7d0006;
+}
+
+:root.dark {
+  color-scheme: dark;
+
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+
+  --primary: #ad0009;
+  --primary-foreground: oklch(0.985 0 0);
+
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+
+  --accent: #f0b600;
+  --accent-foreground: oklch(0.205 0 0);
+
+  --destructive: oklch(0.704 0.191 22.216);
+
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: #f0b600;
+
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: #ad0009;
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: #f0b600;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}

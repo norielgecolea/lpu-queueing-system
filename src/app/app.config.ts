@@ -1,12 +1,70 @@
 import { ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/core';
-import { provideRouter } from '@angular/router';
+import { provideRouter, withComponentInputBinding } from '@angular/router';
+import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
+import { provideIcons } from '@ng-icons/core';
+import {
+  lucideUser,
+  lucideLogIn,
+  lucideLogOut,
+  lucidePrinter,
+  lucideNfc,
+  lucideTicket,
+  lucideBell,
+  lucidePhone,
+  lucideCheck,
+  lucideArrowRight,
+  lucideClock,
+  lucideVolume2,
+  lucideVolumeOff,
+  lucideUsers,
+  lucideRepeat,
+  lucideRotateCcw,
+  lucideBuilding2,
+  lucideCreditCard,
+  lucideFileText,
+  lucideChevronDown,
+  lucideMegaphone,
+  lucideMonitor,
+  lucideListOrdered,
+  lucideRefreshCw,
+  lucideLock,
+  lucideCalendar,
+} from '@ng-icons/lucide';
 
 import { routes } from './app.routes';
-import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
-    provideRouter(routes), provideClientHydration(withEventReplay())
-  ]
+    provideRouter(routes, withComponentInputBinding()),
+    provideClientHydration(withEventReplay()),
+    provideIcons({
+      lucideUser,
+      lucideLogIn,
+      lucideLogOut,
+      lucidePrinter,
+      lucideNfc,
+      lucideTicket,
+      lucideBell,
+      lucidePhone,
+      lucideCheck,
+      lucideArrowRight,
+      lucideClock,
+      lucideVolume2,
+      lucideVolumeOff,
+      lucideUsers,
+      lucideRepeat,
+      lucideRotateCcw,
+      lucideBuilding2,
+      lucideCreditCard,
+      lucideFileText,
+      lucideChevronDown,
+      lucideMegaphone,
+      lucideMonitor,
+      lucideListOrdered,
+      lucideRefreshCw,
+      lucideLock,
+      lucideCalendar,
+    }),
+  ],
 };
