@@ -1,0 +1,8 @@
+package org.lpu.dev.model.dto;
+
+@Getter
+@Setter
+public class LoginRequest {
+    private String username;
+    private String password;
+}

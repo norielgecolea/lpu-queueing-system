@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD//EN" 
+             "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<!-- Step 1: Implementation Configuration class -->
+<hibernate-configuration>
+
+	<session-factory>
+		<!-- Connection object (JDBC) -->
+		<property name="connection.url">jdbc:postgresql://localhost:5432/queueingdb</property>
+		<property name="connection.username">postgres</property>
+		<property name="connection.password">Lpu-1234</property>
+		<property name="connection.driver_class">org.postgresql.Driver</property>
+
+		<!-- Hibernate-related properties -->
+		<property name="hibernate.show_sql">true</property>
+		<property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+
+
+		 <!--  C3PO Connection Pooling --><property name="hibernate.connection.provider_class">org.hibernate.c3p0.internal.C3P0ConnectionProvider</property> 
+			<property name="hibernate.dataSource.driverClassName">org.postgresql.Driver</property> 
+			<property name="hibernate.dataSource.user">postgres</property> <property 
+			name="hibernate.dataSource.password">admin2255</property> <property name="hibernate.dataSource.jdbcUrl">jdbc:postgresql://localhost:5432/college_erp</property> 
+			<property name="hibernate.c3p0.min_size">5</property> <property name="hibernate.c3p0.max_size">50</property> 
+			<property name="hibernate.c3p0.timeout">120</property> <property name="hibernate.c3p0.max_statements">5</property>
+
+		<!-- 2nd-level caching <property name="hibernate.cache.use_second_level_cache">true</property> 
+			<property name="hibernate.cache.use_query_cache">true</property> <property 
+			name="hibernate.cache.region.factory_class">jcache</property> <property name="hibernate.javax.cache.provider">org.ehcache.jsr107.EhcacheCachingProvider</property> 
+			<property name="hibernate.javax.cache.uri">ehcache.xml</property> <property 
+			name="hibernate.cache.ehcache.missing_cache_strategy">create</property> -->
+		<!-- Entity mapping -->
+
+        <!-- ENTITY MAPPINGS -->
+        <mapping class="org.fujitsu.training.codes.model.data.Program"/>
+        <mapping class="org.fujitsu.training.codes.model.data.AdminUser"/>
+        <mapping class="org.fujitsu.training.codes.model.data.Professor"/>
+        <mapping class="org.fujitsu.training.codes.model.data.Student"/>
+        <!--  
+     
+        <mapping class="com.yourapp.collegeerp.model.Subject"/>
+       
+        <mapping class="com.yourapp.collegeerp.model.SubjectDetail"/>
+        <mapping class="com.yourapp.collegeerp.model.Enrollment"/>
+        <mapping class="com.yourapp.collegeerp.model.Grade"/>
+        <mapping class="com.yourapp.collegeerp.model.Attendance"/>
+        
+        -->
+        
+
+
+	</session-factory>
+
+</hibernate-configuration>

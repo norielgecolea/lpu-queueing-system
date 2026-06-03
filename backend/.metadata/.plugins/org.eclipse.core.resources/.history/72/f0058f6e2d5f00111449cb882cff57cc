@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/tx https://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <!-- ===================== MVC =====================  -->
+    <mvc:annotation-driven />
+    <context:component-scan base-package="org.lpu.dev" />
+     <context:component-scan base-package="org.lpu.dev.repository.impl" />
+     <context:component-scan base-package="org.lpu.dev.services.impl" />
+    
+
+    <!-- ===================== VIEW RESOLVER ===================== -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/views/" />
+        <property name="suffix" value=".jsp" />
+    </bean>
+    
+
+
+    <!-- ===================== DATABASE (POSTGRESQL) ===================== -->
+       <!-- C3P0 DataSource Configuration -->
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+        <property name="driverClass" value="org.postgresql.Driver" />
+        <property name="jdbcUrl" value="jdbc:postgresql://localhost:5432/queueingdb" />
+        <property name="user" value="postgres" />
+        <property name="password" value="Lpu-1234" />
+
+        <!-- C3P0-specific pool settings -->
+        <property name="minPoolSize" value="20" />
+        <property name="maxPoolSize" value="100" />
+    </bean>
+
+    
+    <!-- 2. LocalSessionFactoryBean -->
+    <bean id="sessionFactory" class="org.springframework.orm.jpa.hibernate.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <property name="packagesToScan" value="org.lpu.dev.mode.data" />
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</prop>
+                <prop key="hibernate.show_sql">true</prop>
+            </props>
+        </property>
+    </bean>
+
+    <!-- 3. Transaction Manager -->
+    <bean id="transactionManager" class="org.springframework.orm.jpa.hibernate.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+
+    <tx:annotation-driven />
+
+</beans>

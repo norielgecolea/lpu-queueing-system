@@ -1,0 +1,37 @@
+package org.lpu.dev.repository;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.lpu.dev.model.data.User;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import jakarta.data.repository.Repository;
+import jakarta.persistence.Query;
+
+@Repository
+public class UserAccountsDAO {
+
+    @Autowired
+    private SessionFactory sessionFactory;
+
+    // Get current Hibernate session (transaction-managed by Spring)
+    private Session getSession() {
+        return sessionFactory.getCurrentSession();
+    }
+
+    // LOGIN METHOD
+    public User loginUser(String username, String passwordHash) {
+
+        Query<User> query = getSession().createQuery(
+                "FROM User u " +
+                "WHERE u.username = :username " +
+                "AND u.passwordHash = :passwordHash",
+                User.class
+        );
+
+        query.setParameter("username", username);
+        query.setParameter("passwordHash", passwordHash);
+
+        return query.uniqueResult();
+    }
+}
