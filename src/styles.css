@@ -1,5 +1,6 @@
 /* Global styles: Tailwind v4 + spartan-ng theme. */
 
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap');
 @import 'tailwindcss';
 @import '@spartan-ng/brain/hlm-tailwind-preset.css';
 @import 'tw-animate-css';
@@ -9,6 +10,8 @@
   --color-lpu-maroon: #7d0006;
   --color-lpu-red: #ad0009;
   --color-lpu-gold: #f0b600;
+
+  --font-display: 'Outfit', ui-sans-serif, system-ui, sans-serif;
 }
 
 :root {
